@@ -9,13 +9,13 @@ router.get('/', (req, res) => {
   // be sure to include its associated Category and Tag data
   Product.findAll({
     attributes: [
-      "id",
-      "product_name",
-      "price",
-      "stock",
-      "category_id",
-      "tag_data",
+      "id", "product_name", "price", "stock", "category_id", "tag_data",
     ]
+    .then(dbUserData => res.json(dbUserData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    })
   });
 });
 
@@ -25,13 +25,13 @@ router.get('/:id', (req, res) => {
   // be sure to include its associated Category and Tag data
   Product.findOne({
     attributes: [
-      "id",
-      "product_name",
-      "price",
-      "stock",
-      "category_id",
-      "tag_data",
-    ],
+      "id", "product_name", "price", "stock", "category_id", "tag_data",
+    ]
+    .then(dbUserData => res.json(dbUserData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    })
   });
 });
 
